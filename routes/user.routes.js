@@ -1,10 +1,11 @@
 let express =  require('express')
 router = express.Router()
-let {insertData} = require('../controller/user.controller')
+let userController = require('../controller/user.controller')
 
 
 
 
-let createRoute =  router.post('/create',insertData)
+let createRoute =  router.post('/create',userController.insertData)
+let listUsers = router.get('/list',userController.getUserList)
 
-module.exports = createRoute;
+module.exports = router;

@@ -1,7 +1,7 @@
 const { body } = require('express-validator');
 const userTable = require('../model/User')
 const validate = require('../middleware/validator');
-const e = require('express');
+
 const insertData = [body('name').not().notEmpty().withMessage('name is required'), body('email')
     .notEmpty().withMessage('Email is required')
     .isEmail().withMessage('Invalid email address')
@@ -50,4 +50,13 @@ async (req, res, next) => {
 
 }]
 
-module.exports = { insertData };
+const getUserList = async (req, res) => {
+
+    let user = await userTable.findAll()
+
+    return res.json(user)
+
+}
+
+
+module.exports = { insertData, getUserList };
