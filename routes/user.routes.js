@@ -5,6 +5,8 @@ let userController = require('../controller/user.controller')
 
 
 
+
+
 let createRoute =  router.post('/create',userController.insertData)
 let listUsers = router.get('/list',userController.getUserList)
 
